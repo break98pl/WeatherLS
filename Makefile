@@ -1,17 +1,16 @@
-ARCHS = arm64 arm64e
-THEOS_DEVICE_IP = 192.168.1.106#localhost -p 2222
+export ARCHS = arm64 arm64e
+export TARGET = iphone:clang:14.5:15.0
+export FINALPACKAGE=1
+export THEOS_DEVICE_IP= 192.168.1.238
 INSTALL_TARGET_PROCESSES = SpringBoard
-TARGET = iphone:clang:14.4:13
-PACKAGE_VERSION = 2.0.1
+PACKAGE_VERSION = 1.0.2
 
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = WeatherLS
 
+WeatherLS_FILES = Tweak.xm
 WeatherLS_LIBRARIES += pddokdo
-WeatherLS_PRIVATE_FRAMEWORKS = SpringBoardFoundation SpringBoardUIServices
-WeatherLS_FILES = $(shell find Sources/WeatherLS -name '*.swift') $(shell find Sources/WeatherLSC -name '*.m' -o -name '*.c' -o -name '*.mm' -o -name '*.cpp')
-WeatherLS_SWIFTFLAGS = -ISources/WeatherLSC/include
-WeatherLS_CFLAGS = -fobjc-arc -ISources/WeatherLSC/include
+WeatherLS_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
