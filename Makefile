@@ -1,10 +1,9 @@
-ARCHS = arm64 arm64e
-THEOS_DEVICE_IP = localhost -p 2222
+export ARCHS = arm64 arm64e
+export TARGET = iphone:clang:14.5:15.0
+export FINALPACKAGE=1
+export THEOS_DEVICE_IP= 192.168.1.238
 INSTALL_TARGET_PROCESSES = SpringBoard
-TARGET = iphone:clang:13.5:13
-PREFIX = $(THEOS)/toolchain/Xcode11.xctoolchain/usr/bin/
 PACKAGE_VERSION = 1.0.2
-
 
 include $(THEOS)/makefiles/common.mk
 
