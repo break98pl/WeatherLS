@@ -15,20 +15,19 @@ final class WLSView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        if(frame.size.width > 0){
-            image_view = UIImageView(frame: CGRect.zero)
-            image_view.translatesAutoresizingMaskIntoConstraints = false
-            addSubview(image_view)
-            
-            temp_label = UILabel(frame: CGRect.zero)
-            temp_label.translatesAutoresizingMaskIntoConstraints = false
-            temp_label.textAlignment = .center
-            temp_label.font = .systemFont(ofSize: 28)
-            addSubview(temp_label)
-
-            configureConstrains()
-            updateWeather()
-        }
+        
+        image_view = UIImageView(frame: CGRect.zero)
+        image_view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(image_view)
+        
+        temp_label = UILabel(frame: CGRect.zero)
+        temp_label.translatesAutoresizingMaskIntoConstraints = false
+        temp_label.textAlignment = .center
+        temp_label.font = .systemFont(ofSize: 28)
+        addSubview(temp_label)
+        
+        configureConstrains()
+        updateWeather()
     }
     
     func configureConstrains() {
@@ -47,8 +46,8 @@ final class WLSView: UIView {
         PDDokdo.sharedInstance().refreshWeatherData()
         image_view.image = PDDokdo.sharedInstance().currentConditionsImage
         temp_label.text = PDDokdo.sharedInstance().currentTemperature
-        let icon: SBIcon = SBIconController.sharedInstance().model.expectedIcon(forDisplayIdentifier: "com.apple.weather");
-        icon.setOverrideBadgeNumberOrString(temp_label.text);
+        let icon: SBIcon = SBIconController.sharedInstance().model.expectedIcon(forDisplayIdentifier: "com.apple.weather")
+        icon.setOverrideBadgeNumberOrString(temp_label.text)
     }
     
     required init?(coder: NSCoder) {

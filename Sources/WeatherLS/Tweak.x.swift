@@ -2,14 +2,12 @@ import Orion
 import WeatherLSC
 
 class SBFLockScreenDateViewController_Hook: ClassHook<SBFLockScreenDateViewController> {
-    @Property(.nonatomic, .retain) var wls = WLSView();
-    @Property(.nonatomic, .retain) var minuteUpdated:Int = 0;
+    @Property(.nonatomic, .retain) var wls = WLSView()
     
     func viewDidLoad() {
         orig.viewDidLoad()
         wls = WLSView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         target.view.addSubview(wls)
-        minuteUpdated = Int(Calendar.current.component(.minute, from: Date()));
     }
     
     func viewWillAppear(_ animated: Bool) {
@@ -32,10 +30,7 @@ class SBFLockScreenDateViewController_Hook: ClassHook<SBFLockScreenDateViewContr
     
     func _startUpdateTimer() {
         orig._startUpdateTimer()
-        if(minuteUpdated > 0 && minuteUpdated != Int(Calendar.current.component(.minute, from: Date()))){
-            minuteUpdated = Int(Calendar.current.component(.minute, from: Date()));
-            wls.updateWeather()
-        }
+        wls.updateWeather()
     }
 }
 
