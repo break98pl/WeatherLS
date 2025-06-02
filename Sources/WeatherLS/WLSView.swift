@@ -32,14 +32,16 @@ final class WLSView: UIView {
     
     func configureConstrains() {
         image_view.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        image_view.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        image_view.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         image_view.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -20).isActive = true
         image_view.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -20).isActive = true
+        image_view.leftAnchor.constraint(equalTo: self.leftAnchor, constant: -5).isActive = true
         
         temp_label.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        temp_label.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        temp_label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 10).isActive = true
         temp_label.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        temp_label.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        temp_label.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        temp_label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: -13).isActive = true
     }
     
     func updateWeather() {
